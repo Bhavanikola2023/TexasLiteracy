@@ -6,405 +6,507 @@
     <title>Texas Literacy Conference 2025 - AI Resource Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --deep-blue: #1e3a8a;
-            --light-blue: #3b82f6;
+            --lighter-blue: #3b82f6;
             --burnt-orange: #ea580c;
             --mustard-yellow: #eab308;
             --rust-red: #dc2626;
-            --gray-blue: #64748b;
+            --gold-star: #fbbf24;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #1f2937;
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--lighter-blue) 100%);
         }
         
-        .text-deep-blue { color: var(--deep-blue); }
-        .text-light-blue { color: var(--light-blue); }
-        .text-burnt-orange { color: var(--burnt-orange); }
-        .text-mustard-yellow { color: var(--mustard-yellow); }
-        .text-rust-red { color: var(--rust-red); }
-        
-        .bg-deep-blue { background-color: var(--deep-blue); }
-        .bg-light-blue { background-color: var(--light-blue); }
-        .bg-burnt-orange { background-color: var(--burnt-orange); }
-        .bg-mustard-yellow { background-color: var(--mustard-yellow); }
-        .bg-rust-red { background-color: var(--rust-red); }
-        
-        .border-deep-blue { border-color: var(--deep-blue); }
-        .border-light-blue { border-color: var(--light-blue); }
-        .border-burnt-orange { border-color: var(--burnt-orange); }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-in;
+        .text-primary {
+            color: var(--deep-blue);
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .text-accent {
+            color: var(--lighter-blue);
         }
         
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .text-orange {
+            color: var(--burnt-orange);
         }
         
-        .hover-lift:hover {
+        .text-yellow {
+            color: var(--mustard-yellow);
+        }
+        
+        .text-rust {
+            color: var(--rust-red);
+        }
+        
+        .bg-primary {
+            background-color: var(--deep-blue);
+        }
+        
+        .bg-accent {
+            background-color: var(--lighter-blue);
+        }
+        
+        .bg-orange {
+            background-color: var(--burnt-orange);
+        }
+        
+        .bg-yellow {
+            background-color: var(--mustard-yellow);
+        }
+        
+        .bg-rust {
+            background-color: var(--rust-red);
+        }
+        
+        .border-primary {
+            border-color: var(--deep-blue);
+        }
+        
+        .border-orange {
+            border-color: var(--burnt-orange);
+        }
+        
+        .genius-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid var(--burnt-orange);
+            transition: all 0.3s ease;
+        }
+        
+        .genius-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .code-block {
+        .prompt-example {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 1rem;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            overflow-wrap: break-word;
-            white-space: pre-wrap;
+            transition: all 0.3s ease;
         }
         
-        .genius-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-left: 4px solid var(--burnt-orange);
+        .prompt-example:hover {
+            border-color: var(--burnt-orange);
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.1);
         }
         
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, var(--light-blue) 0%, transparent 100%);
-            margin: 2rem 0;
+        .tool-link {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tool-link:hover {
+            border-color: var(--burnt-orange);
+            background-color: rgba(234, 88, 12, 0.05);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        .star-icon {
+            color: var(--gold-star);
         }
         
         @media print {
             body { font-size: 12px; }
-            .hero-gradient { background: var(--deep-blue) !important; }
+            .no-print { display: none; }
+            * { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Hero Header -->
-    <header class="hero-gradient text-white py-12 mb-8">
-        <div class="max-w-6xl mx-auto px-6 text-center animate-fade-in">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">
-                Texas Literacy Conference 2025
-                <i class="fas fa-star text-mustard-yellow ml-2"></i>
-            </h1>
-            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-100">
-                AI-Powered Solutions Resource Hub
-            </h2>
-            <p class="text-xl mb-6 text-gray-200">
-                August 5 & 6, 2025 • All Your AI Prompting Resources in One Place!
-            </p>
-            <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 text-lg">
-                <i class="fas fa-robot text-mustard-yellow mr-3"></i>
-                <span>Maximizing Impact Through AI</span>
+    <!-- Hero Header Section -->
+    <header class="hero-gradient text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="text-accent">LITERACY</span> 
+                    <span class="text-rust">TEXAS</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">
+                    ANNUAL <i class="fas fa-star star-icon"></i> CONFERENCE
+                </h2>
+                <p class="text-xl md:text-2xl mb-6 opacity-90">August 5 & 6, 2025</p>
+                <div class="bg-white bg-opacity-20 rounded-lg p-6 max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-semibold mb-2">AI-Powered Solutions Resource Hub</h3>
+                    <p class="text-lg opacity-90">All your prompting resources in one place!</p>
+                    <p class="text-sm mt-2 opacity-75">Presented by Bhavani Kola, EclaTech Solutions</p>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="max-w-6xl mx-auto px-6 space-y-12">
-
-        <!-- Quick-Start Prompting Guide -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-rocket text-burnt-orange mr-3"></i>
-                Quick-Start Prompting Guide
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift border-l-4 border-deep-blue">
-                    <h3 class="font-bold text-deep-blue mb-3"><i class="fas fa-bullseye mr-2"></i>Task</h3>
-                    <p class="text-gray-700">Clearly define what you want the AI to accomplish</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift border-l-4 border-light-blue">
-                    <h3 class="font-bold text-light-blue mb-3"><i class="fas fa-user-circle mr-2"></i>Persona</h3>
-                    <p class="text-gray-700">Specify the role or expertise level the AI should adopt</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift border-l-4 border-burnt-orange">
-                    <h3 class="font-bold text-burnt-orange mb-3"><i class="fas fa-database mr-2"></i>Content/Context</h3>
-                    <p class="text-gray-700">Provide relevant background information and constraints</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift border-l-4 border-mustard-yellow">
-                    <h3 class="font-bold text-gray-800 mb-3"><i class="fas fa-layout mr-2"></i>Format</h3>
-                    <p class="text-gray-700">Specify the desired structure and presentation style</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift border-l-4 border-rust-red">
-                    <h3 class="font-bold text-rust-red mb-3"><i class="fas fa-check-circle mr-2"></i>Output Requirements</h3>
-                    <p class="text-gray-700">Define success criteria and specific deliverables</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Prompting Paradigms Overview -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-brain text-burnt-orange mr-3"></i>
-                Prompting Paradigms Overview
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">Zero-Shot</h3>
-                    <p class="text-gray-700">Ask the AI to perform a task without providing examples. Best for straightforward, well-defined requests.</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">One-Shot</h3>
-                    <p class="text-gray-700">Provide exactly one example to guide the AI's response format and style.</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">Few-Shot</h3>
-                    <p class="text-gray-700">Give multiple examples to establish patterns and improve accuracy for complex tasks.</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">Chain-of-Thought</h3>
-                    <p class="text-gray-700">Encourage step-by-step reasoning by asking the AI to "think through" the problem aloud.</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">Tree-of-Thought</h3>
-                    <p class="text-gray-700">Explore multiple reasoning paths simultaneously, useful for complex problem-solving scenarios.</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-lg hover-lift">
-                    <h3 class="font-bold text-light-blue mb-3">Role-Prompting</h3>
-                    <p class="text-gray-700">Assign specific expertise or perspective to the AI to improve response quality and relevance.</p>
+    <!-- Quick-Start Prompting Guide -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in stagger-1">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                    <i class="fas fa-rocket text-orange mr-3"></i>
+                    Quick-Start Prompting Guide
+                </h2>
+                <div class="grid md:grid-cols-5 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+                        <h3 class="font-semibold text-primary text-lg mb-2">1. Task</h3>
+                        <p class="text-sm">Define what you want the AI to accomplish</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-accent">
+                        <h3 class="font-semibold text-accent text-lg mb-2">2. Persona</h3>
+                        <p class="text-sm">Specify the role or expertise level</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-orange">
+                        <h3 class="font-semibold text-orange text-lg mb-2">3. Context</h3>
+                        <p class="text-sm">Provide background information and constraints</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow">
+                        <h3 class="font-semibold text-yellow text-lg mb-2">4. Format</h3>
+                        <p class="text-sm">Specify the desired output structure</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-rust">
+                        <h3 class="font-semibold text-rust text-lg mb-2">5. Output</h3>
+                        <p class="text-sm">Detail specific requirements and constraints</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Genius Mode Phrases -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-magic text-burnt-orange mr-3"></i>
-                "Genius Mode" Power Phrases for Enhanced Results
-            </h2>
-            <div class="space-y-6">
-                <div class="genius-card rounded-lg p-6 shadow-lg">
-                    <h3 class="font-bold text-rust-red mb-3 flex items-center">
-                        <span class="bg-burnt-orange text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
-                        Clarity-Seeking Phrase
-                    </h3>
-                    <div class="code-block mb-4">Design a one-week crash-course syllabus that equips high-school teachers to use generative-AI tools in formative assessment; ask me all the questions until you're 95% confident you can complete the task successfully.</div>
-                    <p class="text-gray-700 italic">Use this to ensure the AI gathers all necessary information before proceeding.</p>
-                </div>
-                
-                <div class="genius-card rounded-lg p-6 shadow-lg">
-                    <h3 class="font-bold text-rust-red mb-3 flex items-center">
-                        <span class="bg-burnt-orange text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
-                        Expert-Level Thinking
-                    </h3>
-                    <div class="code-block mb-4">List the three most overlooked ethical risks of deploying AI chatbots in college admissions offices; what would the top 0.1% experts in this field think?</div>
-                    <p class="text-gray-700 italic">Elevates the AI's reasoning to expert-level insights and considerations.</p>
-                </div>
-                
-                <div class="genius-card rounded-lg p-6 shadow-lg">
-                    <h3 class="font-bold text-rust-red mb-3 flex items-center">
-                        <span class="bg-burnt-orange text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
-                        Perspective-Reframing
-                    </h3>
-                    <div class="code-block mb-4">Draft a one-page concept note for a mobile AI-literacy lab that serves rural Texas schools; reframe this in a way that challenges how I see the problem.</div>
-                    <p class="text-gray-700 italic">Challenges assumptions and provides fresh perspectives on familiar problems.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Real-World Prompt Examples Library -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-book-open text-burnt-orange mr-3"></i>
-                Real-World Prompt Examples Library
-            </h2>
-            <div class="space-y-8">
-                
-                <!-- Multilingual Content Creation -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-light-blue">
-                    <h3 class="text-xl font-bold text-light-blue mb-3">
-                        <i class="fas fa-globe mr-2"></i>Multilingual Content Creation
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Purpose:</strong> Instantly translate and adapt literacy materials for diverse populations.</p>
-                    <div class="code-block mb-4">Create a Spanish version of this adult education worksheet, maintaining reading level and cultural relevance for Texas Hispanic communities. Include pronunciation guides for key vocabulary.</div>
-                    <p class="text-sm text-gray-600"><strong>Impact:</strong> Serve 39% of Texas population more effectively, reduce translation costs by 80%</p>
-                </div>
-
-                <!-- Emergency Communication -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-burnt-orange">
-                    <h3 class="text-xl font-bold text-burnt-orange mb-3">
-                        <i class="fas fa-exclamation-triangle mr-2"></i>Emergency Communication
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Scenario:</strong> Hurricane approaching, need to quickly inform Spanish-speaking families about class cancellations.</p>
-                    <div class="code-block mb-4">Translate this emergency notice into Spanish for adult education families in Texas. Keep language simple (5th grade level) and include action steps:
-
-"Classes are cancelled Tuesday-Thursday due to Hurricane conditions. Safety first! Check our website Friday morning for updates. Free childcare will be available when we reopen. Questions? Call Maria at 555-0123."</div>
-                </div>
-
-                <!-- Personalized Learning Materials -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-mustard-yellow">
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">
-                        <i class="fas fa-user-graduate mr-2"></i>Personalized Learning Materials
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Purpose:</strong> Create custom reading passages at specific grade/literacy levels.</p>
-                    <div class="code-block mb-4">Write a 200-word passage about job interview skills for adult learners reading at a 6th-grade level. Include vocabulary words: professional, qualifications, references, punctual. Make it relevant to Texas job market.</div>
-                    <p class="text-sm text-gray-600"><strong>Impact:</strong> Reduce material prep time by 75%, increase learner engagement through relevance</p>
-                </div>
-
-                <!-- Lesson Plan Adaptation -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-rust-red">
-                    <h3 class="text-xl font-bold text-rust-red mb-3">
-                        <i class="fas fa-chalkboard-teacher mr-2"></i>Lesson Plan Adaptation
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Scenario:</strong> Need to modify existing curriculum for learners with different backgrounds.</p>
-                    <div class="code-block mb-4">Adapt this financial literacy lesson about budgeting for adults who primarily work in agricultural/seasonal employment in Texas. Original lesson assumes steady monthly income. Keep same learning objectives but make examples relevant to fluctuating seasonal wages.</div>
-                </div>
-
-                <!-- Grant Writing Assistant -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-deep-blue">
-                    <h3 class="text-xl font-bold text-deep-blue mb-3">
-                        <i class="fas fa-file-contract mr-2"></i>Grant Writing Assistant
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Purpose:</strong> Streamline proposal development and improve funding success rates.</p>
-                    <div class="code-block mb-4">Based on this RFP from Texas Education Agency and our program data, draft a compelling needs statement for our adult basic education program. Emphasize our impact on workforce development in rural Texas counties.</div>
-                    <p class="text-sm text-gray-600"><strong>Impact:</strong> Increase grant success rate by 30%, save 40 hours per proposal</p>
-                </div>
-
-                <!-- Family Engagement -->
-                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-gray-600">
-                    <h3 class="text-xl font-bold text-gray-700 mb-3">
-                        <i class="fas fa-home mr-2"></i>Family Engagement
-                    </h3>
-                    <p class="text-gray-700 mb-4"><strong>Scenario:</strong> Creating materials to help parents support children's reading at home.</p>
-                    <div class="code-block mb-4">Create a one-page guide for parents with limited English proficiency on how to support their child's reading at home. Include 5 specific activities that don't require perfect English, use materials found in most homes, and connect to Texas cultural values around family education.</div>
+    <!-- Prompting Paradigms Overview -->
+    <section class="py-12 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in stagger-2">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                    <i class="fas fa-brain text-orange mr-3"></i>
+                    Prompting Paradigms Overview
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-primary text-lg mb-2">Zero-Shot</h3>
+                        <p class="text-sm">Ask the AI to perform a task without providing any examples or prior context.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-accent text-lg mb-2">One-Shot</h3>
+                        <p class="text-sm">Provide a single example to guide the AI's understanding and response pattern.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-orange text-lg mb-2">Few-Shot</h3>
+                        <p class="text-sm">Give multiple examples to establish a clear pattern for the AI to follow.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-yellow text-lg mb-2">Chain-of-Thought</h3>
+                        <p class="text-sm">Encourage step-by-step reasoning by asking the AI to show its thinking process.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-rust text-lg mb-2">Tree-of-Thought</h3>
+                        <p class="text-sm">Explore multiple reasoning paths simultaneously to find the best solution approach.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="font-semibold text-primary text-lg mb-2">Role-Prompting</h3>
+                        <p class="text-sm">Assign a specific professional role or expertise to shape the AI's response style.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
+    <!-- Genius Mode Phrases -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in stagger-3">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                    <i class="fas fa-magic text-orange mr-3"></i>
+                    "Genius Mode" - Power Phrases for Enhanced Results
+                </h2>
+                <div class="grid md:grid-cols-1 gap-6 max-w-4xl mx-auto">
+                    <div class="genius-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-orange text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0">1</div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-600 mb-2">CLARIFYING QUESTIONS</p>
+                                <p class="font-medium">"Design a one-week crash-course syllabus that equips high-school teachers to use generative-AI tools in formative assessment; <span class="text-orange font-semibold">ask me all the questions until you're 95% confident you can complete the task successfully.</span>"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genius-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0">2</div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-600 mb-2">EXPERT PERSPECTIVE</p>
+                                <p class="font-medium">"List the three most overlooked ethical risks of deploying AI chatbots in college admissions offices; <span class="text-accent font-semibold">what would the top 0.1% experts in this field think?</span>"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genius-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-rust text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 flex-shrink-0">3</div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-600 mb-2">REFRAMING PERSPECTIVE</p>
+                                <p class="font-medium">"Draft a one-page concept note for a mobile AI-literacy lab that serves rural Texas schools; <span class="text-rust font-semibold">reframe this in a way that challenges how I see the problem.</span>"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Custom GPT Links -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-link text-burnt-orange mr-3"></i>
-                Custom GPT Resources
+    <!-- Real-World Prompt Examples Library -->
+    <section class="py-12 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in stagger-4">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                    <i class="fas fa-code text-orange mr-3"></i>
+                    Real-World Prompt Examples Library
+                </h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Example 1: Multilingual Content Creation -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-orange text-lg mb-3">
+                            <i class="fas fa-language mr-2"></i>
+                            Multilingual Content Creation
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Purpose:</strong> Instantly translate and adapt literacy materials for diverse populations.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Create a Spanish version of this adult education worksheet, maintaining reading level and cultural relevance for Texas Hispanic communities. Include pronunciation guides for key vocabulary.</p>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><strong>Impact:</strong> Serve 39% of Texas population more effectively, reduce translation costs by 80%</p>
+                    </div>
+
+                    <!-- Example 2: Emergency Communication -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-rust text-lg mb-3">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            Emergency Communication
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Scenario:</strong> Hurricane approaching, need to quickly inform Spanish-speaking families about class cancellations.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Translate this emergency notice into Spanish for adult education families in Texas. Keep language simple (5th grade level) and include action steps:
+
+"Classes are cancelled Tuesday-Thursday due to Hurricane conditions. Safety first! Check our website Friday morning for updates. Free childcare will be available when we reopen. Questions? Call Maria at 555-0123."</p>
+                        </div>
+                    </div>
+
+                    <!-- Example 3: Personalized Learning Materials -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-accent text-lg mb-3">
+                            <i class="fas fa-user-graduate mr-2"></i>
+                            Personalized Learning Materials
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Purpose:</strong> Create custom reading passages at specific grade/literacy levels.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Write a 200-word passage about job interview skills for adult learners reading at a 6th-grade level. Include vocabulary words: professional, qualifications, references, punctual. Make it relevant to Texas job market.</p>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><strong>Impact:</strong> Reduce material prep time by 75%, increase learner engagement through relevance</p>
+                    </div>
+
+                    <!-- Example 4: Grant Writing Assistant -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-yellow text-lg mb-3">
+                            <i class="fas fa-file-contract mr-2"></i>
+                            Grant Writing Assistant
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Purpose:</strong> Streamline proposal development and improve funding success rates.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Based on this RFP from Texas Education Agency and our program data, draft a compelling needs statement for our adult basic education program. Emphasize our impact on workforce development in rural Texas counties.</p>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><strong>Impact:</strong> Increase grant success rate by 30%, save 40 hours per proposal</p>
+                    </div>
+
+                    <!-- Example 5: Family Engagement -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-primary text-lg mb-3">
+                            <i class="fas fa-home mr-2"></i>
+                            Family Engagement
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Scenario:</strong> Creating materials to help parents support children's reading at home.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Create a one-page guide for parents with limited English proficiency on how to support their child's reading at home. Include 5 specific activities that don't require perfect English, use materials found in most homes, and connect to Texas cultural values around family education.</p>
+                        </div>
+                    </div>
+
+                    <!-- Example 6: Volunteer Training Content -->
+                    <div class="prompt-example p-6">
+                        <h3 class="font-semibold text-orange text-lg mb-3">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i>
+                            Volunteer Training Content
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Purpose:</strong> Rapidly develop comprehensive training materials for literacy volunteers.</p>
+                        <div class="bg-gray-800 text-green-400 p-4 rounded text-sm font-mono overflow-x-auto">
+                            <p class="text-yellow-300 mb-2">// Prompt:</p>
+                            <p class="whitespace-pre-wrap">Create a 4-module training curriculum for volunteer literacy tutors working with adult English language learners. Include role-play scenarios, common challenges, and assessment rubrics. Design for 2-hour sessions.</p>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><strong>Impact:</strong> Standardize volunteer quality, reduce training prep time by 60%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom GPT Links -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-8">
+                <i class="fas fa-robot text-orange mr-3"></i>
+                Custom GPT Tools
             </h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="<<ADD-PROMPT-ENHANCER-GPT-LINK-HERE>>" target="_blank" class="bg-light-blue text-white rounded-lg p-6 text-center hover-lift block transition-all duration-300">
-                    <i class="fas fa-magic text-3xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Prompt Enhancer GPT</h3>
-                    <p class="text-blue-100">Optimize your prompts for better results</p>
-                    <i class="fas fa-external-link-alt mt-3"></i>
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <a href="<<ADD-PROMPT-ENHANCER-GPT-LINK-HERE>>" target="_blank" class="tool-link bg-gradient-to-br from-orange to-yellow text-white p-6 rounded-lg font-semibold text-lg hover:shadow-lg transition-all duration-300 block">
+                    <i class="fas fa-magic mb-2 text-2xl"></i>
+                    <div>Prompt Enhancer GPT</div>
+                    <i class="fas fa-external-link-alt ml-2"></i>
                 </a>
-                <a href="<<ADD-EXCEL-HELPER-GPT-LINK-HERE>>" target="_blank" class="bg-mustard-yellow text-white rounded-lg p-6 text-center hover-lift block transition-all duration-300">
-                    <i class="fas fa-table text-3xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Excel Helper GPT</h3>
-                    <p class="text-yellow-100">Streamline data analysis and reporting</p>
-                    <i class="fas fa-external-link-alt mt-3"></i>
+                <a href="<<ADD-EXCEL-HELPER-GPT-LINK-HERE>>" target="_blank" class="tool-link bg-gradient-to-br from-accent to-primary text-white p-6 rounded-lg font-semibold text-lg hover:shadow-lg transition-all duration-300 block">
+                    <i class="fas fa-table mb-2 text-2xl"></i>
+                    <div>Excel Helper GPT</div>
+                    <i class="fas fa-external-link-alt ml-2"></i>
                 </a>
-                <a href="<<ADD-IMAGE-PROMPT-GPT-LINK-HERE>>" target="_blank" class="bg-burnt-orange text-white rounded-lg p-6 text-center hover-lift block transition-all duration-300">
-                    <i class="fas fa-image text-3xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Image Prompt GPT</h3>
-                    <p class="text-orange-100">Generate visual content prompts</p>
-                    <i class="fas fa-external-link-alt mt-3"></i>
+                <a href="<<ADD-IMAGE-PROMPT-GPT-LINK-HERE>>" target="_blank" class="tool-link bg-gradient-to-br from-rust to-orange text-white p-6 rounded-lg font-semibold text-lg hover:shadow-lg transition-all duration-300 block">
+                    <i class="fas fa-image mb-2 text-2xl"></i>
+                    <div>Image Prompt GPT</div>
+                    <i class="fas fa-external-link-alt ml-2"></i>
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Notion Hub -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-clipboard-list text-burnt-orange mr-3"></i>
+    <!-- Notion Hub -->
+    <section class="py-12 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-6">
+                <i class="fas fa-database text-orange mr-3"></i>
                 Complete Resource Hub
             </h2>
-            <div class="bg-white rounded-lg p-8 shadow-lg text-center">
-                <i class="fas fa-database text-5xl text-light-blue mb-4"></i>
-                <h3 class="text-2xl font-bold text-deep-blue mb-4">Comprehensive AI Prompting Library</h3>
-                <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
-                    Access our complete collection of AI prompts, templates, and resources specifically designed for literacy professionals. 
-                    Includes step-by-step guides, video tutorials, and community discussions.
-                </p>
-                <a href="<<ADD-NOTION-URL-HERE>>" target="_blank" class="inline-flex items-center bg-deep-blue text-white px-8 py-4 rounded-lg font-bold hover-lift transition-all duration-300">
-                    <i class="fas fa-external-link-alt mr-3"></i>
-                    Visit Complete Notion Resource Library
+            <p class="text-lg text-gray-600 mb-8">
+                Explore our comprehensive collection of AI prompts, templates, and resources designed specifically for literacy professionals. Access hundreds of ready-to-use prompts, implementation guides, and best practices.
+            </p>
+            <a href="<<ADD-NOTION-URL-HERE>>" target="_blank" class="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all duration-300">
+                <i class="fas fa-external-link-alt mr-3"></i>
+                Visit Notion Resource Page
+            </a>
+        </div>
+    </section>
+
+    <!-- AI Toolbox Section -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                <i class="fas fa-toolbox text-orange mr-3"></i>
+                Essential AI Toolbox
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <a href="https://chat.openai.com" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-comments text-2xl text-green-600 mb-2"></i>
+                    <div class="font-medium">ChatGPT</div>
+                </a>
+                <a href="https://claude.ai" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-brain text-2xl text-purple-600 mb-2"></i>
+                    <div class="font-medium">Claude.ai</div>
+                </a>
+                <a href="https://perplexity.ai" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-search text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-medium">Perplexity</div>
+                </a>
+                <a href="https://gemini.google.com" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fab fa-google text-2xl text-red-600 mb-2"></i>
+                    <div class="font-medium">Google Gemini</div>
+                </a>
+                <a href="https://genspark.ai" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-spark text-2xl text-orange-600 mb-2"></i>
+                    <div class="font-medium">GenSpark</div>
+                </a>
+                <a href="https://notebooklm.google.com" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-book text-2xl text-indigo-600 mb-2"></i>
+                    <div class="font-medium">NotebookLM</div>
+                </a>
+                <a href="https://napkin.ai" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-chart-bar text-2xl text-teal-600 mb-2"></i>
+                    <div class="font-medium">Napkin.ai</div>
+                </a>
+                <a href="https://suno.ai" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-music text-2xl text-pink-600 mb-2"></i>
+                    <div class="font-medium">Suno AI</div>
+                </a>
+                <a href="https://gamma.app" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-presentation text-2xl text-yellow-600 mb-2"></i>
+                    <div class="font-medium">Gamma</div>
+                </a>
+                <a href="https://slidegpt.com" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-slide text-2xl text-blue-500 mb-2"></i>
+                    <div class="font-medium">SlideGPT</div>
+                </a>
+                <a href="https://aiforthat.com" target="_blank" class="tool-link p-4 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-all duration-300">
+                    <i class="fas fa-tools text-2xl text-gray-600 mb-2"></i>
+                    <div class="font-medium">AI For That</div>
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
-
-        <!-- AI Toolbox -->
-        <section class="animate-fade-in">
-            <h2 class="text-3xl font-bold text-deep-blue mb-6 flex items-center">
-                <i class="fas fa-toolbox text-burnt-orange mr-3"></i>
-                AI Toolbox - Essential Platforms
+    <!-- Success Metrics -->
+    <section class="py-12 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+                <i class="fas fa-chart-line text-orange mr-3"></i>
+                Expected Success Metrics
             </h2>
-            <div class="bg-white rounded-lg p-6 shadow-lg">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <a href="https://chat.openai.com" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-comments text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">ChatGPT</span>
-                    </a>
-                    <a href="https://claude.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-robot text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Claude.ai</span>
-                    </a>
-                    <a href="https://perplexity.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-search text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Perplexity</span>
-                    </a>
-                    <a href="https://gemini.google.com" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fab fa-google text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Google Gemini</span>
-                    </a>
-                    <a href="https://genspark.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-spark text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">GenSpark</span>
-                    </a>
-                    <a href="https://notebooklm.google.com" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-book text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">NotebookLM</span>
-                    </a>
-                    <a href="https://napkin.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-chart-bar text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Napkin.ai</span>
-                    </a>
-                    <a href="https://suno.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-music text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Suno AI</span>
-                    </a>
-                    <a href="https://gamma.app" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-presentation text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">Gamma</span>
-                    </a>
-                    <a href="https://slidegpt.ai" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-file-powerpoint text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">SlideGPT</span>
-                    </a>
-                    <a href="https://aiforthat.com" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover-lift bg-gray-50 hover:bg-light-blue hover:text-white transition-all duration-300">
-                        <i class="fas fa-tools text-2xl mb-2"></i>
-                        <span class="text-sm font-medium">AI For That</span>
-                    </a>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-3xl font-bold text-orange mb-2">50%</div>
+                    <p class="text-sm text-gray-600">Reduction in material development time</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-3xl font-bold text-accent mb-2">30%</div>
+                    <p class="text-sm text-gray-600">Increase in multilingual resource availability</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-3xl font-bold text-rust mb-2">25%</div>
+                    <p class="text-sm text-gray-600">Improvement in volunteer retention</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="text-3xl font-bold text-yellow mb-2">40%</div>
+                    <p class="text-sm text-gray-600">Faster grant proposal development</p>
                 </div>
             </div>
-        </section>
-
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-   <footer class="texas-gradient text-white py-12 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">Connect & Continue Learning</h3>
-               <div class="flex justify-center space-x-6 mb-6">
+    <footer class="bg-primary text-white py-8 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-4">Thank you, Bhavani Kola</h3>
+                <p class="text-lg mb-2">CEO & Founder | EclaTech Solutions</p>
+                <p class="text-sm opacity-90 mb-4">AI Education Leader | Keynote Speaker | Adaptive AI Consultant</p>
+                <p class="text-sm opacity-75 mb-6">Leading the Charge: Closing the AI Literacy Gap, One Organization at a Time</p>
+                
+                <div class="flex justify-center space-x-6 mb-6">
                     <a href="https://www.linkedin.com/in/bhavanikola/" target="_blank" class="bg-accent hover:bg-blue-600 px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center">
                         <i class="fab fa-linkedin mr-2"></i>
                         Connect on LinkedIn for AI Updates
@@ -413,57 +515,30 @@
                         <i class="fab fa-youtube mr-2"></i>
                         Follow for AI Videos
                     </a>
-                    <a href="https://bhavanikola2023.github.io/eclatechbrochure/#home" target="_blank" rel="noopener noreferrer" class="text-white hover:text-yellow-300 transition-colors text-lg">
-                        <i class="fas fa-microphone mr-2"></i>
-Speaking Contract & Services Brochure
+                </div>
+                
+                <div class="mb-6">
+                    <a href="https://bhavanikola2023.github.io/eclatechbrochure/#home" target="_blank" class="inline-flex items-center bg-gradient-to-r from-orange to-yellow text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                        <i class="fas fa-file-alt mr-2"></i>
+                        Speaking Contract & Brochure
+                        <i class="fas fa-external-link-alt ml-2"></i>
                     </a>
                 </div>
             </div>
             
-            <div class="border-t border-gray-300 pt-8">
-                <p class="text-lg mb-2">
-                    <strong>Bhavani Kola</strong> | CEO & Founder, EclaTech Solutions
+            <div class="border-t border-blue-600 pt-6">
+                <p class="text-sm opacity-75 mb-2">
+                    © 2025 Texas Literacy Conference | Licensed under CC-BY 4.0
                 </p>
-                <p class="mb-4">AI Education Leader | Keynote Speaker | Adaptive AI Consultant</p>
-                <p class="text-sm opacity-75">
-                    © 2025 ECLATECH SOLUTIONS LLC. All rights reserved.
-                </p>
-                <p class="text-sm opacity-75 mt-2">
-                    Leading the Charge: Closing the AI Literacy Gap, One Organization at a Time
+                <p class="text-xs opacity-60">
+                    This resource is freely available for educational use. Please attribute when sharing.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Copy code functionality
-        document.querySelectorAll('.code-block').forEach(block => {
-            block.addEventListener('click', function() {
-                navigator.clipboard.writeText(this.textContent).then(() => {
-                    const originalBg = this.style.backgroundColor;
-                    this.style.backgroundColor = '#dcfce7';
-                    setTimeout(() => {
-                        this.style.backgroundColor = originalBg;
-                    }, 500);
-                });
-            });
-            
-            // Add copy cursor
-            block.style.cursor = 'pointer';
-            block.title = 'Click to copy';
-        });
-
-        // Animate elements on scroll
+        // Simple scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -472,13 +547,29 @@ Speaking Contract & Services Brochure
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
